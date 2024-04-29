@@ -3,6 +3,8 @@ const express = require("express");
 //now express server is running
 const app = express();
 require("./DB/conn.js")
+const cors =  require("cors");
+app.use(cors());
 
 
 //useed to parse body from middleware function 

@@ -3,7 +3,7 @@ const {  createUser, Login, Adminlogin, GetUserData } = require("../MiddleWare/U
 const Userroutes = express.Router();
 
 Userroutes.post("/signup", createUser );
-Userroutes.get("/login",Login);
+Userroutes.post("/login",Login);
 Userroutes.post('/adminlogin' ,Adminlogin);
 Userroutes.get('/getuser',GetUserData)
 

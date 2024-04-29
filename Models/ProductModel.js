@@ -28,6 +28,9 @@ const ProductSchema = mongoose.Schema({
     },
     SizeArray: {
         type: [String]
+    },
+    OtherInformation:{
+        type:[String]
     }
 });
 

@@ -5,16 +5,13 @@ const { verityToken } = require("./JWTverify");
 
 exports.createUser = async (req, res) => {
     const { UserName, Email, password } = req.body;
-
     const existingUser = await UserModel.findOne({ Email: Email });
-
     if (existingUser) {
         return res.status(409).json({ message: "User already exists" });
     }
     if (password.length < 6) {
         return res.status(409).json({ message: "password Shoud not less then 6" });
     }
-
     try {
         const newpassword = await bcrypt.hash(password, 10);
         await UserModel.create({
