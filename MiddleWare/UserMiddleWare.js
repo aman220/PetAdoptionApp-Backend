@@ -77,7 +77,12 @@ exports.GetUserData = async (req, res) => {
 exports.Adminlogin = async (req, res) => {
     const { UserName, Password } = req.body;
     if (UserName == 'Admin' && Password == "admin123") {
-        return res.status(201).json({ message: "Sucess" })
+        const token = jwt.sign({ UserName: UserName }, "amanthakur");
+        if(token){
+            return res.status(201).json({ message: "Sucess" ,jwt : token})
+        }else{
+            return res.status(404).json({ message: "token error" });
+        }
     } else {
         return res.status(501).json({ message: "Wrong Credintials" });
     }
